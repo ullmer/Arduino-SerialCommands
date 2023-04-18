@@ -20,7 +20,7 @@ Repository	: https://github.com/ppedro74/Arduino-SerialCommands
 #include <iostream>
 #include <cstring>
 #include "getch.c"
-//#include "kbhit.c"
+#include "kbhit.c"
 //#include <conio>
 
 #define DEC    10
@@ -38,7 +38,7 @@ class Stream {
     //Initially, here we just support those invoked by SerialCommand
 
     //int read()      {return getchar();}
-    int available() {return 1;} //punting initially
+    //int available() {return 1;} //punting initially
 
     int read()      {return getche();}
     int available() {return _kbhit();}
