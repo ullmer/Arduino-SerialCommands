@@ -19,7 +19,7 @@ Repository	: https://github.com/ppedro74/Arduino-SerialCommands
 #include <stdio.h>
 #include <iostream>
 #include <cstring>
-#include "kbhit.c"
+//#include "kbhit.c"
 //#include <conio>
 
 #define DEC    10
@@ -37,7 +37,8 @@ class Stream {
     //Initially, here we just support those invoked by SerialCommand
 
     int read()      {return getchar();}
-    int available() {return _kbhit();}
+    //int available() {return _kbhit();}
+    int available() {return 1;} //punting initially
     size_t print(const char str[])   {printf("%s", str);   return 1;}
     size_t print(int i, int r= DEC)  {printf("%i", i);     return 1;}
     size_t print(char c)             {printf("%c", c);     return 1;}

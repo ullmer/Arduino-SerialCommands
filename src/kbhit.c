@@ -4,6 +4,9 @@
  https://www.flipcode.com/archives/_kbhit_for_Linux.shtml
  */
 
+#ifndef KBHIT
+#define KBHIT
+
 #include <stdio.h>
 #include <sys/select.h>
 #include <termios.h>
@@ -30,5 +33,5 @@ int _kbhit() {
     ioctl(STDIN, FIONREAD, &bytesWaiting);
     return bytesWaiting;
 }
-
+#endif
 /// end ///
