@@ -32,16 +32,19 @@ Repository	: https://github.com/ppedro74/Arduino-SerialCommands
 class Stream {
   public:	  
     //https://github.com/esp8266/Arduino/blob/master/cores/esp8266/Stream.h
+    //Many alternate print arguments supported (e.g.) here:
+    //https://github.com/esp8266/Arduino/blob/master/cores/esp8266/Print.h
+    //Initially, here we just support those invoked by SerialCommand
+
     int read()      {return getchar();}
     int available() {return _kbhit();}
-    //Many alternate arguments supported (e.g.) here:
-    //https://github.com/esp8266/Arduino/blob/master/cores/esp8266/Print.h
-    //Initially, here, just support those invoked by SerialCommand
     size_t print(const char str[])   {printf("%s", str);   return 1;}
     size_t print(int i, int r= DEC)  {printf("%i", i);     return 1;}
     size_t print(char c)             {printf("%c", c);     return 1;}
     size_t println(const char str[]) {printf("%s\n", str); return 1;}
 };
+
+Stream *Serial = new Stream();
 #endif
 
 typedef enum ternary 
