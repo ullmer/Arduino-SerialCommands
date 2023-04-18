@@ -9,7 +9,40 @@ Repository	: https://github.com/ppedro74/Arduino-SerialCommands
 #ifndef SERIAL_COMMANDS_H
 #define SERIAL_COMMANDS_H
 
+#ifdef ARDUINO
 #include <Arduino.h>
+#endif
+
+#ifndef ARDUINO
+
+//workarounds with stdio for uses off-Arduino, initially focused on stdio
+#include <stdio.h>
+#include <iostream>
+#include <cstring>
+#include "kbhit.c"
+//#include <conio>
+
+#define DEC    10
+#define boolean  bool
+#define size_t   int
+#define int8_t   char
+#define uint8_t  unsigned char
+#define int16_t  int
+
+class Stream {
+  public:	  
+    //https://github.com/esp8266/Arduino/blob/master/cores/esp8266/Stream.h
+    int read()      {return getchar();}
+    int available() {return _kbhit();}
+    //Many alternate arguments supported (e.g.) here:
+    //https://github.com/esp8266/Arduino/blob/master/cores/esp8266/Print.h
+    //Initially, here, just support those invoked by SerialCommand
+    size_t print(const char str[])   {printf("%s", str);   return 1;}
+    size_t print(int i, int r= DEC)  {printf("%i", i);     return 1;}
+    size_t print(char c)             {printf("%c", c);     return 1;}
+    size_t println(const char str[]) {printf("%s\n", str); return 1;}
+};
+#endif
 
 typedef enum ternary 
 {
