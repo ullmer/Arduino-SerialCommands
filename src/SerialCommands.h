@@ -44,7 +44,7 @@ class Stream {
     size_t println(const char str[]) {printf("%s\n", str); return 1;}
 };
 
-Stream *Serial = new Stream();
+//Stream *SerialProxy = new Stream();
 #endif
 
 typedef enum ternary 
