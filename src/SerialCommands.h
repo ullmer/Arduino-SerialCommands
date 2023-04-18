@@ -40,7 +40,7 @@ class Stream {
     //int read()      {return getchar();}
     //int available() {return 1;} //punting initially
 
-    int read()      {return getche();}
+    int read()      {return getch();}
     int available() {return _kbhit();}
     size_t print(const char str[])   {printf("%s", str);   return 1;}
     size_t print(int i, int r= DEC)  {printf("%i", i);     return 1;}
