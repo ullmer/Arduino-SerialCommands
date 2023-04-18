@@ -19,6 +19,7 @@ Repository	: https://github.com/ppedro74/Arduino-SerialCommands
 #include <stdio.h>
 #include <iostream>
 #include <cstring>
+#include "getch.c"
 //#include "kbhit.c"
 //#include <conio>
 
@@ -36,9 +37,11 @@ class Stream {
     //https://github.com/esp8266/Arduino/blob/master/cores/esp8266/Print.h
     //Initially, here we just support those invoked by SerialCommand
 
-    int read()      {return getchar();}
-    //int available() {return _kbhit();}
+    //int read()      {return getchar();}
     int available() {return 1;} //punting initially
+
+    int read()      {return getche();}
+    int available() {return _kbhit();}
     size_t print(const char str[])   {printf("%s", str);   return 1;}
     size_t print(int i, int r= DEC)  {printf("%i", i);     return 1;}
     size_t print(char c)             {printf("%c", c);     return 1;}
