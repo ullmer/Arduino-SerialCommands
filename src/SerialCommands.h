@@ -19,8 +19,8 @@ Repository	: https://github.com/ppedro74/Arduino-SerialCommands
 #include <stdio.h>
 #include <iostream>
 #include <cstring>
-#include "getch.c"
-#include "kbhit.c"
+#include "getch.h"
+#include "kbhit.h"
 //#include <conio>
 
 #define DEC    10
